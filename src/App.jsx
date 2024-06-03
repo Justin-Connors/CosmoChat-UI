@@ -13,10 +13,10 @@ const App = () => {
     
     try {
       const reply = await sendMessageToChatGPT(message);
-      setMessages(prevMessages => [...prevMessages, `You: ${message}`, `ChatGPT: ${reply}`]);
+      setMessages(prevMessages => [...prevMessages, `ChatGPT: ${reply}`]);
     } catch (error) {
       console.error('Error sending message:', error);
-      setMessages(prevMessages => [...prevMessages, `You: ${message}`, 'ChatGPT: Sorry, something went wrong. Please try again later.']);
+      setMessages(prevMessages => [...prevMessages, 'ChatGPT: Sorry, something went wrong. Please try again later.']);
     }
   };
 
