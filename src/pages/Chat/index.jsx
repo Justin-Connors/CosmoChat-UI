@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 
 const Chat = () => {
 
-  const API_KEY = process.env.API_KEY;
-  const openai = new OpenAI({ apiKey: API_KEY });
+  const OPEN_AI_KEY = process.env.OPENAI_KEY;
+  const openai = new OpenAI({ apiKey: OPEN_AI_KEY });
 
     return (
         <div>
