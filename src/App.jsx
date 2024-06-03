@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Box } from '@mui/material';
+import Header from './components/Header';
+import ChatWindow from './components/ChatWindow';
+import ChatInput from './components/ChatInput';
+import { sendMessageToChatGPT } from './api/sendMessage';
 
-function App() {
+const App = () => {
+  const [messages, setMessages] = useState([]);
+
+  const handleSend = async (message) => {
+    setMessages(prevMessages => [...prevMessages, `You: ${message}`]);
+    
+    try {
+      const reply = await sendMessageToChatGPT(message);
+      setMessages(prevMessages => [...prevMessages, `You: ${message}`, `ChatGPT: ${reply}`]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setMessages(prevMessages => [...prevMessages, `You: ${message}`, 'ChatGPT: Sorry, something went wrong. Please try again later.']);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <Header />
+      <ChatWindow messages={messages} />
+      <ChatInput onSend={handleSend} />
+    </Box>
   );
-}
+};
 
 export default App;
