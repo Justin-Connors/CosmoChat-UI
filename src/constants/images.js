@@ -1,0 +1,5 @@
+/*
+
+Add global images when needed
+
+*/
