@@ -6,8 +6,8 @@ export const sendMessageToChatGPT = async (message) => {
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo', 
