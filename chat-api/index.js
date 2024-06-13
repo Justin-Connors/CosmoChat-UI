@@ -27,7 +27,7 @@ try {
 }
 
 const openai = new OpenAIApi.OpenAI({
-  apiKey: '',
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY
 });
 
 app.post('/api/messages', async (req, res) => {
