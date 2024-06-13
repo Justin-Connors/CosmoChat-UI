@@ -27,7 +27,7 @@ try {
 }
 
 const openai = new OpenAIApi.OpenAI({
-  apiKey: 'sk-proj-Vw00450y0ezLVXV70N4IT3BlbkFJIkHIf6fRfOspDnUBMwUE',
+  apiKey: '',
 });
 
 app.post('/api/messages', async (req, res) => {
